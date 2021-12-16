@@ -74,4 +74,4 @@ def LinearReg(X, y):
     t1 = lower.reshape(-1, )
     return Beta, error, t1, t2, X_clean, y
 
-a,b,c,d,e,f=LinearReg(X1, y1)
+#a,b,c,d,e,f=LinearReg(X1, y1)
