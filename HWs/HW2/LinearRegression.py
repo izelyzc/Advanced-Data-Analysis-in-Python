@@ -15,9 +15,10 @@ import scipy.stats as st
 kg.api.authenticate()
 kg.api.dataset_download_file('sohier/calcofi', file_name='bottle.csv',  path='data/')
 
-
+#read data from csv
 df=pd.read_csv('data/bottle.csv.zip',nrows=1000)
 
+#Write first 1000 rows of the data to csv file
 df.to_csv("calcofi_data.csv")
 
 def LinearReg(df):
