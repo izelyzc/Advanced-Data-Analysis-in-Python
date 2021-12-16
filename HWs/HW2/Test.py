@@ -18,7 +18,7 @@ class LinearRegressionTest(unittest.TestCase):
         self.X = df.iloc[: , :2]
         self.y = df.iloc[2]
         np.seterr(divide='ignore')
-        beta, std_error, t1, t2, self.X_clean, self.y_clean = LinearReg(self.X, self.y)
+        beta, std_error, t1, t2, self.X_clean, self.y_clean = LinearReg(self.df)
 
     def test_nan(self):
         X = self.X.dropna().to_numpy()
