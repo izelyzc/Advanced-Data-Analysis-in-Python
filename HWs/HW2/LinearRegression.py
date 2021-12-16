@@ -20,12 +20,6 @@ df=pd.read_csv('data/bottle.csv.zip',nrows=1000)
 
 df.to_csv("calcofi_data.csv")
 
-X1=df[['T_degC','Depthm']]
-y1=df['Salnty']
-y_name='Salnty'
-
-
-
 def LinearReg(df):
     Beta, error, t1, t2 = None, None, None, None
 
