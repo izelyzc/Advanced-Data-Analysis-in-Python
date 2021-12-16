@@ -13,7 +13,7 @@ import numpy.testing as npt
 
 
 class LinearRegressionTest(unittest.TestCase):
-    def setUp(self):
+    def setUp(self,df):
         self.df = pd.DataFrame( [[1.0, np.nan, 3.0, 1.2,1, np.nan,5],[2.0, np.nan, 5.0, 6.2,1, np.nan,7],[10.0, np.nan, 20.0, 40.0, 20.0,np.nan,50]])
         self.X = df.iloc[: , :2]
         self.y = df.iloc[2]
