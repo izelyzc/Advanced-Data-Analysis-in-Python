@@ -20,24 +20,26 @@ df=pd.read_csv('data/bottle.csv.zip',nrows=1000)
 
 df.to_csv("calcofi_data.csv")
 
-X1=df[['T_degC','Cst_Cnt']]
+X1=df[['T_degC','Depthm']]
 y1=df['Salnty']
+y_name='Salnty'
 
 
 
-def LinearReg(X, y):
+def LinearReg(df):
     Beta, error, t1, t2 = None, None, None, None
 
-    # Handling NaN values
-    X_clean = X.dropna().to_numpy()
-    y = y.dropna().to_numpy()
+    # Handling NaN value
+    df = df.dropna()
+    X=df[['T_degC','Depthm']].to_numpy()
+    y=df['Salnty'].to_numpy()
+     
 
-    # Adding 1 to the X matrix for the intercept
-    one_column = np.ones((X_clean.shape[0], 1))
-    X = np.concatenate((one_column, X_clean), axis=1)
+    ## Adding 1 to the X matrix for the intercept
+    X_one = np.concatenate((np.ones((len(X), 1), dtype=int), X), axis=1)
 
-    # Beta
-    Beta = np.linalg.solve(np.dot(X.T, X), np.dot(X.T, y))
+    ## Beta
+    Beta = np.linalg.solve(np.dot(X_one.T, X_one), np.dot(X_one.T, y))
 
 
     # Y_hat
@@ -72,6 +74,6 @@ def LinearReg(X, y):
     t2 = upper.reshape(-1, )
     lower = np.subtract(theta, t_part)
     t1 = lower.reshape(-1, )
-    return Beta, error, t1, t2, X_clean, y
+    return Beta, error, t1, t2, X, y
 
-#a,b,c,d,e,f=LinearReg(X1, y1)
+#a,b,c,d,e,f=LinearReg(df)
